@@ -253,32 +253,13 @@ public class BinaryTree<E> {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
     
     
     
     /*
     ##############################
-    Metodos del taller
+    Metodos del extra
     ##############################
     */
     
@@ -330,65 +311,6 @@ public class BinaryTree<E> {
     
     
     
-    /*
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    METODOS DE PRACTICA PARA LA LECCION
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    */
-    
-    
-    //1. Implementar el metodo sumar pares que suma todos los pares de un arbol pasado como parametro
-    
-    public static int sumarPares(BinaryTree<Integer> tree){
-        //Debemos usar una implementacion iterativa
-        int suma = 0;
-        Stack<BinaryTree<Integer>> s = new Stack<>();
-        //Solo se debe comprobar que el arbol al que se hace pop sea par, si lo es. Sumamos su contenido a suma
-        s.push(tree);
-        while(!s.isEmpty()){
-            BinaryTree<Integer> subtree = s.pop();
-            
-            if(!subtree.isEmpty()){
-                if(subtree.getRootContent() % 2 == 0){
-                    //En este caso el numero es par:
-                    suma+=subtree.getRootContent();
-                }
-                if(subtree.getLeft()!=null){
-                    s.push(subtree.getLeft());
-                }
-                if(subtree.getRight()!=null){
-                    s.push(subtree.getRight());
-                }
-            }
-        }
-        
-        return suma;
-    }
-    
-    
-//    public BinaryTree<Integer> findIntersection(BinaryTree<Integer> tree2){
-//        /*
-//        La idea es comparar los 2 arboles, RECURSIVAMENTE y si ambos son iguales en algun
-//        campo, se crea el nodo y se lo almacena al arbol resultante???
-//        */
-//        if(this.isEmpty()|| tree2.isEmpty()){
-//            return null;    //No hay interseccion
-//        }
-//        
-//        //Si ninguno de los 2 es vacio
-//        //Es xq existe una interseccion entre los
-//        BinaryTree<Integer> result = new BinaryTree<>((int) this.getRootContent()+tree2.getRootContent());
-//
-//        if(this.getLeft()!=null && tree2.getLeft()!=null){
-//            result.setLeft(this.getLeft().findIntersection(tree2.getLeft()));
-//        }
-//        if(this.getRight()!=null && tree2.getRight()!=null){
-//            result.setRight(this.getRight().findIntersection(tree2.getRight()));
-//        }
-//
-//        return result;
-//        
-//    }
     
     public boolean isMirror(BinaryTree<E> arbol){
         /*
@@ -417,40 +339,9 @@ public class BinaryTree<E> {
         
 
     }
+    
 
-    public static LinkedList<Integer> largestValueInEachLevel(BinaryTree<Integer> tree){
-        LinkedList<Integer> result = new LinkedList<>();
-        Queue<BinaryTree<Integer>> q = new LinkedList<>();
-        if(!tree.isEmpty()){
-            q.offer(tree);
-            
-        }
-        int max = Integer.MIN_VALUE;
-        while(!q.isEmpty()){
-            BinaryTree<Integer> subtree = q.poll();
-//            int max = Integer.MIN_VALUE;
-            System.out.println(max);
-            if(max<subtree.getRootContent()){
-                max = subtree.getRootContent();
-            }
-            
-            if(subtree.getLeft()!=null){
-                q.offer(subtree.getLeft());
-            }
-            if(subtree.getRight()!=null){
-                q.offer(subtree.getRight());
-            }
-            
-            result.add(max);
-            
-            
-            
-        }
-        
-        return result;
-        
-        
-    }
+
     
     public int countNodesWithOnlyChild(){
         if(this.isEmpty()){
