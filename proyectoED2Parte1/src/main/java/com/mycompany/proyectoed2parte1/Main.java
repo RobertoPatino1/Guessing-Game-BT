@@ -1,3 +1,5 @@
+package com.mycompany.proyectoed2parte1;
+
 
 public class Main {
 
