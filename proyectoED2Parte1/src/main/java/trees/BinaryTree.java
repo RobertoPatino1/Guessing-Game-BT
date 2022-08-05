@@ -492,23 +492,29 @@ public class BinaryTree<E> {
     
     
     public void setLastLeaves(E element){
-        Queue<BinaryTree<E>> q = new LinkedList<>();
-        q.offer(this);
-        while (!q.isEmpty()) {
-            BinaryTree<E> tree = q.poll();
-            if (!tree.isEmpty() && tree.isLeaf()) {
-                BinaryTree<E> nodeLeft=new BinaryTree(element);
-                tree.getRoot().setLeft(nodeLeft);
-                BinaryTree<E> nodeRight=new BinaryTree(element);
-                tree.getRoot().setRight(nodeRight);
-            }
-            else{
-                if (tree.getLeft() != null) {
-                    q.offer(tree.getLeft());
+        if(this.isEmpty()){
+            BinaryNode<E> nodo=new BinaryNode(element);
+            this.setRoot(nodo);
+        }
+        else{
+            Queue<BinaryTree<E>> q = new LinkedList<>();
+            q.offer(this);
+            while (!q.isEmpty()) {
+                BinaryTree<E> tree = q.poll();
+                if (!tree.isEmpty() && tree.isLeaf()) {
+                    BinaryTree<E> nodeLeft=new BinaryTree(element);
+                    tree.getRoot().setLeft(nodeLeft);
+                    BinaryTree<E> nodeRight=new BinaryTree(element);
+                    tree.getRoot().setRight(nodeRight);
                 }
-                if (tree.getRight()!= null) {
-                    q.offer(tree.getRight());
-                }            
+                else{
+                    if (tree.getLeft() != null) {
+                        q.offer(tree.getLeft());
+                    }
+                    if (tree.getRight()!= null) {
+                        q.offer(tree.getRight());
+                    }            
+                }
             }
         }
     }
