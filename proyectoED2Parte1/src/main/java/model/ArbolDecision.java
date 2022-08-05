@@ -90,7 +90,7 @@ public class ArbolDecision {
     
     
     public String recorrerArbolRespuestas(ArrayList<String> listaRespuestas){
-        //[si,no,no]
+
         String retorno = "";
         Stack<BinaryTree<String>> s = new Stack<>();
         s.push(arbol);
