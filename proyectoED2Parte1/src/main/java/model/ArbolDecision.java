@@ -19,6 +19,9 @@ import util.Lector;
 public class ArbolDecision {
     private BinaryTree arbol;
     private static final ArrayList<String> listaPreguntas = Lector.cargarListaPreguntas(Constants.rutaPreguntas);
+    private ArrayList<Respuesta> listaRespuestas = Lector.cargarListaRespuestas(Constants.rutaRespuestas);
+    
+    
     public ArbolDecision(){
         this.arbol=new BinaryTree();
         this.iniciarPreguntas();
@@ -52,31 +55,37 @@ public class ArbolDecision {
     
     public void setAnimal(Respuesta respuesta){
         ArrayList<String> lista=respuesta.getRespuestas();
-        Stack<BinaryTree<String>> s = new Stack<>();
-        s.push(arbol);
-        int index=0;
-        while(!s.isEmpty()){
-            BinaryTree<String> tmp=s.pop();
-            if(tmp.isLeaf()){
-                if(lista.get(index).equalsIgnoreCase("si")){
-                    BinaryTree<String> tmpLeft=new BinaryTree(respuesta.getAnimal());
-                    tmp.setLeft(tmpLeft);
+        
+        if(listaPreguntas.size()==respuesta.getRespuestas().size()){
+            Stack<BinaryTree<String>> s = new Stack<>();
+            s.push(arbol);
+            int index=0;
+            while(!s.isEmpty()){
+                BinaryTree<String> tmp=s.pop();
+                if(tmp.isLeaf()){
+                    if(lista.get(index).equalsIgnoreCase("si")){
+                        BinaryTree<String> tmpLeft=new BinaryTree(respuesta.getAnimal());
+                        tmp.setLeft(tmpLeft);
+                    }
+                    else if(lista.get(index).equalsIgnoreCase("no")){
+                        BinaryTree<String> tmpRight=new BinaryTree(respuesta.getAnimal());
+                        tmp.setRight(tmpRight);
+                    }
+                }
+                else if(lista.get(index).equalsIgnoreCase("si")){
+                    s.push(tmp.getLeft());
+                    index++;
                 }
                 else if(lista.get(index).equalsIgnoreCase("no")){
-                    BinaryTree<String> tmpRight=new BinaryTree(respuesta.getAnimal());
-                    tmp.setRight(tmpRight);
+                    s.push(tmp.getRight());
+                    index++;
                 }
-            }
-            else if(lista.get(index).equalsIgnoreCase("si")){
-                s.push(tmp.getLeft());
-                index++;
-            }
-            else if(lista.get(index).equalsIgnoreCase("no")){
-                s.push(tmp.getRight());
-                index++;
-            }
-        
+
+            }    
         }
+        
+        
+
     }
     
     
