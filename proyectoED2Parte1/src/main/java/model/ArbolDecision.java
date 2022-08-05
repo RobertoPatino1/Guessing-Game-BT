@@ -16,10 +16,10 @@ import util.Lector;
  *
  * @author josel
  */
-public class ArbolRespuestas {
+public class ArbolDecision {
     private BinaryTree arbol;
     private static final ArrayList<String> listaPreguntas = Lector.cargarListaPreguntas(Constants.rutaPreguntas);
-    public ArbolRespuestas(){
+    public ArbolDecision(){
         this.arbol=new BinaryTree();
         this.iniciarPreguntas();
         this.iniciarRespuestas();

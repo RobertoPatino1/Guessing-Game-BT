@@ -2,7 +2,7 @@ package com.mycompany.proyectoed2parte1;
 
 import java.util.ArrayList;
 import java.util.Stack;
-import model.ArbolRespuestas;
+import model.ArbolDecision;
 import model.Respuesta;
 import trees.BinaryTree;
 import util.Constants;
@@ -16,11 +16,11 @@ public class Main {
         
         System.out.println(Lector.cargarListaRespuestas(Constants.rutaRespuestas));
         
-        ArbolRespuestas arbol=new ArbolRespuestas();
+        ArbolDecision arbol=new ArbolDecision();
         
         System.out.println(arbol.getArbol().inOrderRecursiveTraversal());
         
-        ArrayList<String> respuestas = ArbolRespuestas.pedirRespuestas();
+        ArrayList<String> respuestas = ArbolDecision.pedirRespuestas();
         
         
         System.out.println(arbol.recorrerArbolRespuestas(respuestas));
