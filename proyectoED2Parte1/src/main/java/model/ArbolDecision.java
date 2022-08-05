@@ -58,20 +58,20 @@ public class ArbolDecision {
         while(!s.isEmpty()){
             BinaryTree<String> tmp=s.pop();
             if(tmp.isLeaf()){
-                if(lista.get(index).equals("si")){
+                if(lista.get(index).equalsIgnoreCase("si")){
                     BinaryTree<String> tmpLeft=new BinaryTree(respuesta.getAnimal());
                     tmp.setLeft(tmpLeft);
                 }
-                else if(lista.get(index).equals("no")){
+                else if(lista.get(index).equalsIgnoreCase("no")){
                     BinaryTree<String> tmpRight=new BinaryTree(respuesta.getAnimal());
                     tmp.setRight(tmpRight);
                 }
             }
-            else if(lista.get(index).equals("si")){
+            else if(lista.get(index).equalsIgnoreCase("si")){
                 s.push(tmp.getLeft());
                 index++;
             }
-            else if(lista.get(index).equals("no")){
+            else if(lista.get(index).equalsIgnoreCase("no")){
                 s.push(tmp.getRight());
                 index++;
             }
@@ -93,7 +93,7 @@ public class ArbolDecision {
                 retorno =  tmp.getRootContent();
 
             }
-            else if(listaRespuestas.get(index).equals("si")){
+            else if(listaRespuestas.get(index).equalsIgnoreCase("si")){
                 if(tmp.getLeft()!=null){
                     s.push(tmp.getLeft());
                     index++;                   
@@ -102,7 +102,7 @@ public class ArbolDecision {
                 }
 
             }
-            else if(listaRespuestas.get(index).equals("no")){
+            else if(listaRespuestas.get(index).equalsIgnoreCase("no")){
                 if(tmp.getRight()!=null){
                     s.push(tmp.getRight());
                     index++;              
