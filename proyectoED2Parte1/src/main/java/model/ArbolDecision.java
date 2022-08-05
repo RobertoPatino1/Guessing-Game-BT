@@ -127,11 +127,11 @@ public class ArbolDecision {
             System.out.println(pregunta);
             String respuesta = sc.nextLine();
      
-//            while(!respuesta.equalsIgnoreCase("si")||!respuesta.equalsIgnoreCase("no")){
-//                System.out.println("Debe responder en forma de si o no.");
-//                System.out.println(pregunta);
-//                respuesta = sc.nextLine();
-//            }
+            while(!respuesta.equalsIgnoreCase("si")&&!respuesta.equalsIgnoreCase("no")){
+                System.out.println("Debe responder en forma de si o no.");
+                System.out.println(pregunta);
+                respuesta = sc.nextLine();
+            }
             
             
             respuestas.add(respuesta);
