@@ -17,9 +17,19 @@ public class Main {
         System.out.println(Lector.cargarListaRespuestas(Constants.rutaRespuestas));
         
         ArbolRespuestas arbol=new ArbolRespuestas();
+        
         System.out.println(arbol.getArbol().inOrderRecursiveTraversal());
+        
+        ArrayList<String> respuestas = ArbolRespuestas.pedirRespuestas();
+        
+        
+        System.out.println(arbol.recorrerArbolRespuestas(respuestas));
  
     }
+    
+    
+    
+   
 
     
     

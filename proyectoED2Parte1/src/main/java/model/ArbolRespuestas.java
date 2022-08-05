@@ -6,6 +6,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Stack;
 import trees.BinaryTree;
 import util.Constants;
@@ -17,7 +18,7 @@ import util.Lector;
  */
 public class ArbolRespuestas {
     private BinaryTree arbol;
-    
+    private static final ArrayList<String> listaPreguntas = Lector.cargarListaPreguntas(Constants.rutaPreguntas);
     public ArbolRespuestas(){
         this.arbol=new BinaryTree();
         this.iniciarPreguntas();
@@ -76,6 +77,69 @@ public class ArbolRespuestas {
             }
         
         }
+    }
+    
+    
+    public String recorrerArbolRespuestas(ArrayList<String> listaRespuestas){
+        //[si,no,no]
+        String retorno = "";
+        Stack<BinaryTree<String>> s = new Stack<>();
+        s.push(arbol);
+        int index=0;
+        while(!s.isEmpty()){
+            BinaryTree<String> tmp=s.pop();
+            
+            if(index==listaRespuestas.size()){
+                retorno =  tmp.getRootContent();
+
+            }
+            else if(listaRespuestas.get(index).equals("si")){
+                if(tmp.getLeft()!=null){
+                    s.push(tmp.getLeft());
+                    index++;                   
+                }else{
+                    retorno =  "No se pudo encontrar la respuesta";
+                }
+
+            }
+            else if(listaRespuestas.get(index).equals("no")){
+                if(tmp.getRight()!=null){
+                    s.push(tmp.getRight());
+                    index++;              
+                }else{
+                    retorno =  "No se pudo encontrar la respuesta";
+                }
+
+            }
+        
+        }
+        return retorno;
+    }
+    
+    
+    public static ArrayList<String> pedirRespuestas(){
+        
+        Scanner sc = new Scanner(System.in);
+        ArrayList<String> respuestas = new ArrayList<>();
+        
+        for(String pregunta:listaPreguntas){
+            
+            System.out.println(pregunta);
+            String respuesta = sc.nextLine();
+     
+//            while(!respuesta.equalsIgnoreCase("si")||!respuesta.equalsIgnoreCase("no")){
+//                System.out.println("Debe responder en forma de si o no.");
+//                System.out.println(pregunta);
+//                respuesta = sc.nextLine();
+//            }
+            
+            
+            respuestas.add(respuesta);
+           
+        }
+        
+        return respuestas;
+        
     }
     
 }
