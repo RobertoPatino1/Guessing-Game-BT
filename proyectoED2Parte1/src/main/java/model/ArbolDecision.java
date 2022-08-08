@@ -99,7 +99,7 @@ public class ArbolDecision {
             BinaryTree<String> tmp=s.pop();
             
             if(index==listaRespuestas.size()){
-                retorno =  tmp.getRootContent();
+                retorno = "Estas pensando en un(a) " +tmp.getRootContent()+"!";
 
             }
             else if(listaRespuestas.get(index).equalsIgnoreCase("si")){
