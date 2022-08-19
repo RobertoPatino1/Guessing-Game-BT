@@ -90,7 +90,7 @@ public class ArbolDecision {
     
     
     public String recorrerArbolRespuestas(ArrayList<String> listaRespuestas){
-        //[si,no,no]
+
         String retorno = "";
         Stack<BinaryTree<String>> s = new Stack<>();
         s.push(arbol);
@@ -99,7 +99,7 @@ public class ArbolDecision {
             BinaryTree<String> tmp=s.pop();
             
             if(index==listaRespuestas.size()){
-                retorno =  tmp.getRootContent();
+                retorno = "Estas pensando en un(a) " +tmp.getRootContent()+"!";
 
             }
             else if(listaRespuestas.get(index).equalsIgnoreCase("si")){
